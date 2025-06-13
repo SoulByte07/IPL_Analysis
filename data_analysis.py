@@ -84,4 +84,14 @@ plt.show()
 plt.clf()
 
 
+#Year-wise Match Count
+matches_per_year = matches['season'].value_counts().sort_index()
 
+#plot 5
+sns.lineplot(x=matches_per_year.index, y=matches_per_year.values, marker='o')
+plt.title("IPL Matches Per Season")
+plt.xlabel("Season")
+plt.ylabel("Number of Matches")
+plt.savefig("outputs/matches_per_year.png")
+plt.show()
+plt.clf()
