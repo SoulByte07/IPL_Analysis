@@ -95,3 +95,14 @@ plt.ylabel("Number of Matches")
 plt.savefig("outputs/matches_per_year.png")
 plt.show()
 plt.clf()
+
+
+# sucessful team per season
+season_winner = matches.groupby(['season', 'winner']).size().reset_index(name='wins')
+
+# Get max win team per season
+top_per_season = season_winner.loc[season_winner.groupby('season')['wins'].idxmax()]
+
+# Display as table
+print(top_per_season[['season', 'winner', 'wins']])
+
