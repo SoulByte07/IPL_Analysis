@@ -14,7 +14,7 @@ print(deliveries.head())
 top_teams= matches['winner'].value_counts().head(5)
 
 
-#plot
+#plot 1
 sns.set(style="whitegrid")
 plt.figure(figsize=(8, 5)) 
 sns.barplot(x=top_teams.values,y=top_teams.index,hue=top_teams.index,palette='viridis',legend=False)
@@ -39,5 +39,22 @@ plt.ylabel("Player")
 plt.savefig('outputs/top_players.png')
 plt.show()
 plt.clf()
+
+
+# Create a new column
+matches['toss_match_win'] = matches['toss_winner'] == matches['winner']
+
+# Count how often toss winner also won the match
+toss_result = matches['toss_match_win'].value_counts()
+
+# Plot 3
+sns.barplot(x=toss_result.index, y=toss_result.values, palette="Set2")
+plt.xticks([0, 1], ['Lost Match', 'Won Match'])
+plt.title("Does Toss Winner Also Win Match?")
+plt.ylabel("Number of Matches")
+plt.savefig('outputs/toss_results.png')
+plt.show()
+plt.clf()
+
 
 
