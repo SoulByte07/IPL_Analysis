@@ -57,4 +57,31 @@ plt.show()
 plt.clf()
 
 
+#Most Matches Played in Which City (Venue Analysis)
+venue_counts = matches['venue'].value_counts().head(10)
+
+#plot 4
+sns.barplot(y=venue_counts.index, x=venue_counts.values, palette="cubehelix")
+plt.title("Top 10 Most Used Venues")
+plt.xlabel("No. of Matches")
+plt.ylabel("Venue")
+plt.savefig('outputs/venue_counts.png')
+plt.show()
+plt.clf()
+
+
+
+#Bat First vs Chase
+
+#recult type counts
+result_type=matches['toss_decision'].value_counts()
+
+# Pie chart
+plt.pie(result_type, labels=result_type.index, autopct='%1.1f%%', colors=['#FFDDC1', '#B5EAD7'])
+plt.title("Match Wins: Batting First vs Chasing")
+plt.savefig('outputs/result_type.png')
+plt.show()
+plt.clf()
+
+
 
